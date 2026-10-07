@@ -3,3 +3,5 @@ bench/dist/
 bench/bin/
 bench/node_modules/
 bench/data/payload_1m.json
+devin/proj/.env
+devin/log/

@@ -11,6 +11,8 @@ Research date: 2026-10-01. Integration claims below come from the official docs 
 - Resolved decisions: first buyer = individual developers (self-serve, observe-first); default failure stance = fail-safe prompting, deny only for critical hard rules, strict fail-closed as an opt-in mode (section 5, policy `[mode].failure_stance`).
 - **Laya details were NOT supplied** (the answer was an unfilled template placeholder). Laya is treated as unknown; nothing in release 1 depends on it. Still open (section 10).
 
+**Changes in v0.3 (2026-10-07, owner decision):** **Devin CLI is the only release-1 target** (first and only adapter for Phases 0 to 2). Claude Code and Codex material in sections 1.1 to 1.6, 2.4, 4 and 11 is retained as *reference for future adapters*; it is documentation-derived and **UNVERIFIED** (no account/access). Devin facts below come from the Devin CLI docs shipped with the installed app and are also UNVERIFIED empirically until experiments D1 to D6 (`reports/DEVIN-docs-findings.md`) run. The Devin CLI is currently not logged in on the dev machine, which blocks those experiments.
+
 ---
 
 ## 0. Summary of the decisions that matter
@@ -26,7 +28,27 @@ Research date: 2026-10-01. Integration claims below come from the official docs 
 
 ## 1. Integration strategy
 
-### 1.1 Claude Code: what is supported today
+### 1.0 Devin CLI: what is supported today (release-1 target; docs-derived, UNVERIFIED)
+
+Source: Devin CLI docs bundled with the installed app (`extensibility/hooks/overview.mdx`, `lifecycle-hooks.mdx`, `reference/permissions.mdx`, `sandbox.mdx`, `reference/configuration/global-vs-local.mdx`); CLI `devin 3000.11.3`.
+
+| Aspect | Devin CLI (per docs) | Implication for Wardent |
+| :- | :- | :- |
+| Events | `PreToolUse`, `PostToolUse`, `PermissionRequest`, `UserPromptSubmit`, `Stop`, `PostCompaction`, `SessionStart`, `SessionEnd` | Phase 1 observes `PreToolUse`, `PostToolUse`, `PermissionRequest`, `Stop`, `SessionStart` (+ `UserPromptSubmit`, `SessionEnd` if fixtures confirm) |
+| Handlers | `command` (stdin JSON), `prompt` (LLM) | `command` only |
+| Tool names | `exec`, `edit`, `write`, `read`, `apply_patch`, `grep`, `glob`, `webfetch`, `run_subagent`, `mcp__<server>__<tool>` | Adapter maps `exec`->shell, `edit/write/apply_patch`->file ops |
+| Common fields | `hook_event_name`, `session_id`, `prompt_id`; env `DEVIN_PROJECT_DIR`; `tool_provenance` on `PreToolUse`; `last_assistant_message`/`stop_hook_active` on `Stop`; `tool_response{success,output,error}` on `PostToolUse` | Maps to `AgentEvent`; no `permission_mode`, `model`, or `cwd` documented (UNVERIFIED) |
+| Block semantics | exit 2 (reason from stderr) or JSON `decision:"block"`; any other non-zero exit is logged and **does not block** (fail-open); JSON `approve` exists | Same fail-open trap as other agents; Phase 1 never blocks |
+| Rewrite / context | `updatedInput` (merged into args), `additionalContext` | Not used in Phase 1 |
+| Locations | project `.devin/hooks.v1.json` (whole file = event map), `.devin/config.json`/`config.local.json` and user `%APPDATA%\devin\config.json` (`"hooks"` key); **all sources collected and all run**; deduplicated by source file; ancestor dirs up to repo root | Installer writes only `.devin/hooks.v1.json` (project) or the user config `hooks` key (`--user`) |
+| `.claude/` hooks | **Loaded by default** (`read_config_from.claude`) | Wardent never writes `.claude/`; a Claude-format Wardent hook would also fire in Devin |
+| Not documented | default timeout and timeout outcome; Windows hook shell and quoting; behaviour on crash/missing exe/bad JSON; workspace-trust gating of project hooks; whether a project can disable hooks | Experiments D2 to D5 |
+| Native permissions | modes: Normal (default), Accept Edits, Smart (fast-model judge; never auto-approves installs, mutating git, `rm`/`sudo`, cloud-destructive CLIs, dotenv/key/git-config access), Bypass, Autonomous (needs `--sandbox`); deny > ask > allow rules; org deny/ask rules via Team Settings override modes | Risk Guard overlaps Smart mode's blocklist (section 11.6) |
+| Sandbox | `--sandbox` (macOS seatbelt, Linux bwrap+seccomp); **not supported on Windows; the CLI refuses to start rather than run unsandboxed** | No OS-level containment for Windows users: a deterministic guard has more value there |
+
+---
+
+### 1.1 Claude Code: what is supported today (reference only, UNVERIFIED, not a release-1 target)
 
 Source: Hooks reference (https://code.claude.com/docs/en/hooks), Permissions (https://code.claude.com/docs/en/permissions).
 
@@ -123,6 +145,8 @@ Source: Codex Hooks (https://developers.openai.com/codex/hooks, `.md` variant fe
 ---
 
 ### 1.6 First adapter, given the access the project actually has (added 2026-10-04)
+
+> **SUPERSEDED (v0.3, 2026-10-07): the first and only release-1 adapter is Devin CLI.** The text below is kept as the reasoning for why unverifiable adapters must not ship enforcement; it now applies to Claude Code and Codex as future adapters.
 
 Facts: the developer has **no Claude Code account**, develops on **native Windows**, and Codex access is **unconfirmed** (`codex` is not installed on the dev machine; the question was left unanswered). The earlier plan assumed Claude Code first, Codex second.
 
@@ -676,4 +700,18 @@ Honest starting point: the vendors have shipped substantial native safety. Warde
 - **Pitch:** "One local policy and flight recorder for all your coding agents: explains what the agent did and why Wardent stopped it. Guardrail, not sandbox."
 - Release 1 differentiators must therefore be: (a) **observe-first flight recorder** with `wardent log/explain` that works on day one with zero configuration (Phase 1), (b) **repo policy file** with protected paths, custom deny/ask rules and per-category thresholds (Phase 2), (c) **explanation for every decision**, (d) **secret-exposure and sensitive-file detection** beyond what generic classifiers do (e.g. custom secret patterns, `.env` reads via shell, tokens in prompts), (e) **works alongside** native controls (never emits `allow`, never loosens native rules).
 - **Validation required in Phase 0/1 (not assumed):** measure, on a labeled set, what fraction of Wardent-only catches are *not* already blocked by Claude auto mode / Codex defaults. If overlap is ~100% on generic risks, Phase 2 must lean on repo policy, secrets, audit, and Windows rather than generic command rules. This is an explicit go/no-go input (see `docs/PHASE0_SPIKE_PLAN.md`, experiment E9).
+- **Devin CLI is now the target; see 11.6.**
 - **Interop rule:** Wardent's decisions compose with native ones. Claude: hook `deny` always wins; hook `ask` forces a prompt even in auto mode; Wardent abstains otherwise. Codex: `deny` and `PermissionRequest` only.
+
+### 11.6 Differentiation vs Devin CLI native controls (release-1 target; docs-derived, UNVERIFIED)
+
+What Devin ships natively: permission modes (Normal, Accept Edits, **Smart**, Bypass, Autonomous), deny > ask > allow rules, organization deny/ask rules that override user modes (Team Settings), hooks, and an OS sandbox (`--sandbox`) that is **not available on Windows** (the CLI hard-fails there rather than run unsandboxed).
+
+Where Wardent can add value:
+1. **Windows users have no sandbox.** Native containment is absent; an independent local audit trail plus (later) deterministic rules matter more there. Dev machine is Windows, so this is also the segment we can test.
+2. **Bypass and Accept Edits users** get no review of shell commands (Bypass auto-approves everything). Observe-first Wardent gives them a flight recorder; Phase 2 rules give a guard that works even when prompts are off.
+3. **Smart mode is a model judge with a fixed blocklist** (installs, mutating git, `rm`/`sudo`, destructive cloud CLIs, dotenv/key/git-config access always prompt). Generic risky-command blocking is therefore **already covered** in Smart mode and, by prompting, in Normal mode. Wardent must not claim generic command blocking as its differentiator; repo-specific rules, secret/sensitive-file exposure in outputs, and explainable audit are the pitch.
+4. **Audit:** Devin exposes OTel logs (`tool_decision`, `tool_result`, correlation by `session.id`/`prompt.id`/`tool_use_id`) but its own docs note a decision source "does not always distinguish a hook approval from a user approval". Wardent's local, redacted, no-network JSONL log is complementary, not duplicative, and meets the local-first constraint (OTel needs a collector).
+5. **Hook semantics are fail-open** (non-2 exit codes do not block); Phase 2 must convert internal failures into explicit decisions (not in Phase 1, which never blocks).
+
+Open validation (experiments D1 to D6): payload shapes, timeouts, Windows hook shell, whether projects can disable hooks, and what Smart/Normal mode already stops on a labeled command set (the E9 equivalent).
