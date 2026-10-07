@@ -1,0 +1,340 @@
+﻿[
+    {
+        "id":  0,
+        "ok":  true,
+        "exes":  [
+                     "get-childitem"
+                 ]
+    },
+    {
+        "id":  1,
+        "ok":  true,
+        "exes":  [
+                     "get-childitem"
+                 ]
+    },
+    {
+        "id":  2,
+        "ok":  true,
+        "exes":  [
+                     "npm"
+                 ]
+    },
+    {
+        "id":  3,
+        "ok":  true,
+        "exes":  [
+                     "git",
+                     "git"
+                 ]
+    },
+    {
+        "id":  4,
+        "ok":  true,
+        "exes":  [
+                     "get-content",
+                     "convertfrom-json"
+                 ]
+    },
+    {
+        "id":  5,
+        "ok":  true,
+        "exes":  [
+                     "get-content"
+                 ]
+    },
+    {
+        "id":  6,
+        "ok":  true,
+        "exes":  [
+                     "set-location",
+                     "npm"
+                 ]
+    },
+    {
+        "id":  7,
+        "ok":  true,
+        "exes":  [
+                     "node"
+                 ]
+    },
+    {
+        "id":  8,
+        "ok":  true,
+        "exes":  [
+                     "test-path",
+                     "write-host"
+                 ]
+    },
+    {
+        "id":  9,
+        "ok":  true,
+        "exes":  [
+                     "get-process",
+                     "where-object",
+                     "select-object"
+                 ]
+    },
+    {
+        "id":  10,
+        "ok":  true,
+        "exes":  [
+                     "get-childitem",
+                     "get-content"
+                 ]
+    },
+    {
+        "id":  11,
+        "ok":  true,
+        "exes":  [
+                     "copy-item",
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  12,
+        "ok":  true,
+        "exes":  [
+                     "python"
+                 ]
+    },
+    {
+        "id":  13,
+        "ok":  true,
+        "exes":  [
+                     "dotnet"
+                 ]
+    },
+    {
+        "id":  14,
+        "ok":  true,
+        "exes":  [
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  15,
+        "ok":  true,
+        "exes":  [
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  16,
+        "ok":  true,
+        "exes":  [
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  17,
+        "ok":  true,
+        "exes":  [
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  18,
+        "ok":  true,
+        "exes":  [
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  19,
+        "ok":  true,
+        "exes":  [
+                     "get-content"
+                 ]
+    },
+    {
+        "id":  20,
+        "ok":  true,
+        "exes":  [
+                     "get-content"
+                 ]
+    },
+    {
+        "id":  21,
+        "ok":  true,
+        "exes":  [
+                     "get-childitem",
+                     "out-string"
+                 ]
+    },
+    {
+        "id":  22,
+        "ok":  true,
+        "exes":  [
+                     "invoke-expression",
+                     "invoke-webrequest"
+                 ]
+    },
+    {
+        "id":  23,
+        "ok":  true,
+        "exes":  [
+                     "invoke-expression",
+                     "new-object"
+                 ]
+    },
+    {
+        "id":  24,
+        "ok":  true,
+        "exes":  [
+                     "invoke-restmethod",
+                     "invoke-expression"
+                 ]
+    },
+    {
+        "id":  25,
+        "ok":  true,
+        "exes":  [
+                     "invoke-webrequest",
+                     "invoke-expression"
+                 ]
+    },
+    {
+        "id":  26,
+        "ok":  true,
+        "exes":  [
+                     "format-volume"
+                 ]
+    },
+    {
+        "id":  27,
+        "ok":  true,
+        "exes":  [
+                     "git"
+                 ]
+    },
+    {
+        "id":  28,
+        "ok":  true,
+        "exes":  [
+                     "reg"
+                 ]
+    },
+    {
+        "id":  29,
+        "ok":  true,
+        "exes":  [
+                     "stop-process"
+                 ]
+    },
+    {
+        "id":  30,
+        "ok":  true,
+        "exes":  [
+                     "powershell"
+                 ]
+    },
+    {
+        "id":  31,
+        "ok":  true,
+        "exes":  [
+                     "pwsh"
+                 ]
+    },
+    {
+        "id":  32,
+        "ok":  true,
+        "exes":  [
+                     "c:\\windows\\system32\\cmd.exe"
+                 ]
+    },
+    {
+        "id":  33,
+        "ok":  true,
+        "exes":  [
+                     "\u003cdyn\u003e"
+                 ]
+    },
+    {
+        "id":  34,
+        "ok":  true,
+        "exes":  [
+                     "\u003cdyn\u003e"
+                 ]
+    },
+    {
+        "id":  35,
+        "ok":  true,
+        "exes":  [
+                     "invoke-command",
+                     "remove-item"
+                 ]
+    },
+    {
+        "id":  36,
+        "ok":  true,
+        "exes":  [
+                     "cmd"
+                 ]
+    },
+    {
+        "id":  37,
+        "ok":  true,
+        "exes":  [
+                     "start-process"
+                 ]
+    },
+    {
+        "id":  38,
+        "ok":  true,
+        "exes":  [
+
+                 ]
+    },
+    {
+        "id":  39,
+        "ok":  true,
+        "exes":  [
+                     "invoke-expression"
+                 ]
+    },
+    {
+        "id":  40,
+        "ok":  true,
+        "exes":  [
+                     "write-host"
+                 ]
+    },
+    {
+        "id":  41,
+        "ok":  true,
+        "exes":  [
+                     "select-string"
+                 ]
+    },
+    {
+        "id":  42,
+        "ok":  false,
+        "exes":  [
+                     "write-output"
+                 ]
+    },
+    {
+        "id":  43,
+        "ok":  false,
+        "exes":  [
+                     "write-host"
+                 ]
+    },
+    {
+        "id":  44,
+        "ok":  true,
+        "exes":  [
+                     "git"
+                 ]
+    },
+    {
+        "id":  45,
+        "ok":  true,
+        "exes":  [
+                     "get-childitem",
+                     "foreach-object",
+                     "remove-item"
+                 ]
+    }
+]

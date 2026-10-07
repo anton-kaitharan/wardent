@@ -1,0 +1,5 @@
+tools/
+bench/dist/
+bench/bin/
+bench/node_modules/
+bench/data/payload_1m.json

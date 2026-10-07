@@ -1,0 +1,152 @@
+{
+ "env": {
+  "os": "Windows-11-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cond": "busy",
+  "node": "v22.18.0",
+  "bun": "'..' is not recognized as an internal or external command,\noperable program or batch file.",
+  "go": "'..' is not recognized as an internal or external command,\noperable program or batch file."
+ },
+ "rows": [
+  {
+   "name": "floor-node-noop",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 76.69109999999999,
+   "p95": 107.3966,
+   "p99": 137.40540000000001,
+   "max": 282.4318,
+   "over200": 1
+  },
+  {
+   "name": "floor-go-noop",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 17.464,
+   "p95": 32.9131,
+   "p99": 61.960300000000004,
+   "max": 71.0053,
+   "over200": 0
+  },
+  {
+   "name": "node-plain",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 90.7908,
+   "p95": 209.9874,
+   "p99": 331.831,
+   "max": 346.67210000000006,
+   "over200": 11
+  },
+  {
+   "name": "node-bundled",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 86.0798,
+   "p95": 116.76810000000002,
+   "p99": 224.41340000000002,
+   "max": 240.5643,
+   "over200": 3
+  },
+  {
+   "name": "node-bundled-cc",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 85.0849,
+   "p95": 115.8203,
+   "p99": 188.9156,
+   "max": 202.4088,
+   "over200": 1
+  },
+  {
+   "name": "bun-script",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 47.199200000000005,
+   "p95": 61.5841,
+   "p99": 90.9453,
+   "max": 216.1432,
+   "over200": 1
+  },
+  {
+   "name": "bun-compiled",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 44.543400000000005,
+   "p95": 59.95660000000001,
+   "p99": 78.1612,
+   "max": 79.31250000000001,
+   "over200": 0
+  },
+  {
+   "name": "go",
+   "payload": "payload_1k",
+   "n": 200,
+   "p50": 20.2483,
+   "p95": 31.992200000000004,
+   "p99": 41.6555,
+   "max": 44.306200000000004,
+   "over200": 0
+  },
+  {
+   "name": "node-plain",
+   "payload": "payload_1m",
+   "n": 200,
+   "p50": 93.1545,
+   "p95": 133.084,
+   "p99": 190.58670000000004,
+   "max": 265.46430000000004,
+   "over200": 1
+  },
+  {
+   "name": "node-bundled",
+   "payload": "payload_1m",
+   "n": 200,
+   "p50": 95.10730000000001,
+   "p95": 139.2254,
+   "p99": 289.4886,
+   "max": 369.93350000000004,
+   "over200": 2
+  },
+  {
+   "name": "node-bundled-cc",
+   "payload": "payload_1m",
+   "n": 200,
+   "p50": 101.55640000000001,
+   "p95": 139.7237,
+   "p99": 165.22830000000002,
+   "max": 248.8461,
+   "over200": 1
+  },
+  {
+   "name": "bun-script",
+   "payload": "payload_1m",
+   "n": 200,
+   "p50": 55.87950000000001,
+   "p95": 72.7772,
+   "p99": 107.0204,
+   "max": 210.01540000000003,
+   "over200": 1
+  },
+  {
+   "name": "bun-compiled",
+   "payload": "payload_1m",
+   "n": 200,
+   "p50": 52.219,
+   "p95": 117.81410000000001,
+   "p99": 218.9898,
+   "max": 290.9762,
+   "over200": 4
+  },
+  {
+   "name": "go",
+   "payload": "payload_1m",
+   "n": 200,
+   "p50": 41.790600000000005,
+   "p95": 97.9312,
+   "p99": 244.50300000000001,
+   "max": 471.0898,
+   "over200": 4
+  }
+ ]
+}

@@ -1,0 +1,44 @@
+# THROWAWAY Phase 0 workflow (E5 cold-start benchmark on 3 OSes). NOT YET RUN: needs a GitHub remote.
+name: spike-bench
+on: workflow_dispatch
+jobs:
+  bench:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: spike/bench
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - uses: actions/setup-go@v5
+        with: { go-version: '1.26.8' }
+      - uses: oven-sh/setup-bun@v2
+        with: { bun-version: '1.4.2' }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.13' }
+      - name: Install hyperfine
+        run: |
+          case "$RUNNER_OS" in
+            Linux) curl -sL https://github.com/sharkdp/hyperfine/releases/download/v1.20.0/hyperfine_1.20.0_amd64.deb -o h.deb && sudo dpkg -i h.deb ;;
+            macOS) brew install hyperfine ;;
+            Windows) choco install hyperfine -y ;;
+          esac
+      - name: Build candidates
+        run: |
+          python gen.py
+          mkdir -p bin dist
+          (cd gosrc && go build -ldflags "-s -w" -o ../bin/shim-go$([ "$RUNNER_OS" = Windows ] && echo .exe) .)
+          cp bin/shim-go$([ "$RUNNER_OS" = Windows ] && echo .exe) bin/noop-go$([ "$RUNNER_OS" = Windows ] && echo .exe)
+          bun build --compile shim.js --outfile bin/shim-bun
+          npm ci || npm i --save-dev esbuild@0.25.10
+          npx esbuild shim.js --bundle --platform=node --minify --outfile=dist/shim.bundle.js
+      - name: Run benchmark
+        run: python run_bench.py idle 200 && python run_bench.py idle 200 _run2
+      - uses: actions/upload-artifact@v4
+        with: { name: e5-${{ matrix.os }}, path: spike/results/E5 }

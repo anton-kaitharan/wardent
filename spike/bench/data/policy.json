@@ -1,0 +1,368 @@
+{
+ "version": 1,
+ "mode": {
+  "default": "observe"
+ },
+ "rules": [
+  {
+   "id": "r0",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\brm\\s+-[a-zA-Z]*[rR][a-zA-Z]*\\s+(/|~|\\$HOME)"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r1",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bgit\\s+push\\b.*(--force|\\s-f\\b)"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r2",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bgit\\s+reset\\s+--hard"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r3",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bgit\\s+clean\\s+-[a-z]*f"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r4",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bcurl\\b[^|]*\\|\\s*(ba)?sh"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r5",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bwget\\b[^|]*\\|\\s*(ba)?sh"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r6",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bchmod\\s+-R\\s+777"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r7",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bsudo\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r8",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bdd\\s+if="
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r9",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bmkfs\\."
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r10",
+   "match": {
+    "tool": "shell",
+    "command_regex": ":\\(\\)\\s*\\{"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r11",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bdrop\\s+table\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r12",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bdrop\\s+database\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r13",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\btruncate\\s+table\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r14",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bkubectl\\s+delete\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r15",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bterraform\\s+destroy"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r16",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\baws\\s+s3\\s+rm\\b.*--recursive"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r17",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bgcloud\\b.*\\bdelete\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r18",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bdocker\\s+system\\s+prune"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r19",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bnpm\\s+publish\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r20",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bcat\\s+.*\\.env\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r21",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bprintenv\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r22",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\benv\\s*\\|"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r23",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bbase64\\s+-d\\b.*\\|\\s*(ba)?sh"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r24",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\beval\\s+"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r25",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bnc\\s+-e\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r26",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bssh-keygen\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r27",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bscp\\s+.*@"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r28",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bRemove-Item\\b.*-Recurse.*-Force"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r29",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bInvoke-Expression\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r30",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\biex\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r31",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bFormat-Volume\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r32",
+   "match": {
+    "tool": "shell",
+    "command_regex": "-EncodedCommand"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r33",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bdel\\s+/[sq]"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r34",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\brmdir\\s+/s"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r35",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\breg\\s+delete\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r36",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bnpm\\s+install\\s+-g\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r37",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bpip\\s+install\\b.*--index-url"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r38",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bchown\\s+-R\\b"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  },
+  {
+   "id": "r39",
+   "match": {
+    "tool": "shell",
+    "command_regex": "\\bmv\\s+.*\\s+/dev/null"
+   },
+   "action": "ask",
+   "reason": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+ ]
+}
