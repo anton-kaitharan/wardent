@@ -1,0 +1,15 @@
+{
+  "hook_event_name": "PostToolUse",
+  "tool_name": "read",
+  "tool_input": {
+    "file_path": "C:\\project\\hello.txt"
+  },
+  "tool_use_id": "call_000000000000000000000000",
+  "tool_response": {
+    "success": true,
+    "output": "<file-view path=\"C:\\project\\hello.txt\" start_line=\"1\" end_line=\"1\" total_lines=\"1\">\n  1|Hello, world! This is sample content.\n</file-view>",
+    "error": null
+  },
+  "session_id": "sess_test_123",
+  "prompt_id": "00000000-0000-0000-0000-000000000000"
+}

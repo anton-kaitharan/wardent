@@ -1,0 +1,6 @@
+{
+  "hook_event_name": "SessionEnd",
+  "reason": "other",
+  "session_id": "sess_test_123",
+  "prompt_id": "00000000-0000-0000-0000-000000000000"
+}

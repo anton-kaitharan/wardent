@@ -1,0 +1,15 @@
+{
+  "hook_event_name": "PostToolUse",
+  "tool_name": "exec",
+  "tool_input": {
+    "command": "echo hello_probe_1"
+  },
+  "tool_use_id": "call_000000000000000000000000",
+  "tool_response": {
+    "success": true,
+    "output": "Output from command in shell dbb72f:\nhello_probe_1\n\n\nExit code: 0",
+    "error": null
+  },
+  "session_id": "sess_test_123",
+  "prompt_id": "00000000-0000-0000-0000-000000000000"
+}

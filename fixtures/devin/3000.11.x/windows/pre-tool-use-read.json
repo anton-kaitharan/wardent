@@ -1,0 +1,10 @@
+{
+  "hook_event_name": "PreToolUse",
+  "tool_name": "read",
+  "tool_input": {
+    "file_path": "C:\\project\\hello.txt"
+  },
+  "tool_use_id": "call_000000000000000000000000",
+  "session_id": "sess_test_123",
+  "prompt_id": "00000000-0000-0000-0000-000000000000"
+}

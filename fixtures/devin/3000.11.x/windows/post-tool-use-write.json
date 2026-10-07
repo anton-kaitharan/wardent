@@ -1,0 +1,16 @@
+{
+  "hook_event_name": "PostToolUse",
+  "tool_name": "write",
+  "tool_input": {
+    "file_path": "C:\\project\\hello.txt",
+    "content": "Hello, world! This is sample content.\n"
+  },
+  "tool_use_id": "call_000000000000000000000000",
+  "tool_response": {
+    "success": true,
+    "output": "File created successfully at: C:\\project\\hello.txt",
+    "error": null
+  },
+  "session_id": "sess_test_123",
+  "prompt_id": "00000000-0000-0000-0000-000000000000"
+}

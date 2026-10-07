@@ -1,0 +1,7 @@
+{
+  "hook_event_name": "Stop",
+  "stop_hook_active": false,
+  "last_assistant_message": "`hello_probe_1` \u2014 ran successfully, exit code 0.",
+  "session_id": "sess_test_123",
+  "prompt_id": "00000000-0000-0000-0000-000000000000"
+}
